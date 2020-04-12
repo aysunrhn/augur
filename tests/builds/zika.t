@@ -45,7 +45,9 @@ Build a tree from the multiple sequence alignment.
   >  --method iqtree \
   >  --tree-builder-args "-seed 314159" > /dev/null
 
-  $ diff -u "$TEST_DATA_DIR/expected/tree_raw.nwk" "$TMP/out/tree_raw.nwk"
+IQ-TREE does not appear to have predictable branch length outputs across architectures even with the same seed.
+
+#$ diff -u "$TEST_DATA_DIR/expected/tree_raw.nwk" "$TMP/out/tree_raw.nwk"
 
 Build a time tree from the existing tree topology, the multiple sequence alignment, and the strain metadata.
 
