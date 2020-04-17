@@ -45,7 +45,7 @@ Build a tree from the multiple sequence alignment.
   >  --method iqtree \
   >  --tree-builder-args "-seed 314159" > /dev/null
 
-  $ python3 "$TESTDIR/../../scripts/diff_trees.py" "$TEST_DATA_DIR/expected/tree_raw.nwk" "$TMP/out/tree_raw.nwk" --significant-digits 5
+  $ python "$TESTDIR/../../scripts/diff_trees.py" "$TEST_DATA_DIR/expected/tree_raw.nwk" "$TMP/out/tree_raw.nwk" --significant-digits 5
   {}
 
 Build a time tree from the existing tree topology, the multiple sequence alignment, and the strain metadata.
@@ -64,7 +64,7 @@ Build a time tree from the existing tree topology, the multiple sequence alignme
 
 Confirm that TreeTime trees match expected topology and branch lengths.
 
-  $ python3 "$TESTDIR/../../scripts/diff_trees.py" "$TEST_DATA_DIR/expected/tree.nwk" "$TMP/out/tree.nwk" --significant-digits 2
+  $ python "$TESTDIR/../../scripts/diff_trees.py" "$TEST_DATA_DIR/expected/tree.nwk" "$TMP/out/tree.nwk" --significant-digits 2
   {}
 
 #$ diff -u "$TEST_DATA_DIR/expected/branch_lengths.json" "$TMP/out/branch_lengths.json"
