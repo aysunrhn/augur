@@ -45,9 +45,8 @@ Build a tree from the multiple sequence alignment.
   >  --method iqtree \
   >  --tree-builder-args "-seed 314159" > /dev/null
 
-NOTE: IQ-TREE does not appear to have predictable branch length outputs across architectures even with the same seed.
-
-#$ diff -u "$TEST_DATA_DIR/expected/tree_raw.nwk" "$TMP/out/tree_raw.nwk"
+  $ python3 "$TESTDIR/../../scripts/diff_trees.py" "$TEST_DATA_DIR/expected/tree_raw.nwk" "$TMP/out/tree_raw.nwk" --significant-digits 5
+  {}
 
 Build a time tree from the existing tree topology, the multiple sequence alignment, and the strain metadata.
 
@@ -63,10 +62,12 @@ Build a time tree from the existing tree topology, the multiple sequence alignme
   >  --date-inference marginal \
   >  --clock-filter-iqd 4 > /dev/null
 
-NOTE: TreeTime does not have predictable branch length outputs, so we can't test for exact output matches here.
+Confirm that TreeTime trees match expected topology and branch lengths.
+
+  $ python3 "$TESTDIR/../../scripts/diff_trees.py" "$TEST_DATA_DIR/expected/tree.nwk" "$TMP/out/tree.nwk" --significant-digits 2
+  {}
 
 #$ diff -u "$TEST_DATA_DIR/expected/branch_lengths.json" "$TMP/out/branch_lengths.json"
-#$ diff -u "$TEST_DATA_DIR/expected/tree.nwk" "$TMP/out/tree.nwk"
 
 Calculate tip frequencies from the tree.
 
